@@ -5,8 +5,6 @@ import { Cart } from "./cart.entities";
 import { JwtAuthGuard } from "src/auth/jwt/jwt-auth.guards";
 import { Roles } from "src/auth/roles.decorator";
 import { Role } from "src/auth/role.enum";
-import { RolesGuard } from "src/auth/roles.guard";
-
 
 @Controller('cart')
 export class CartController {

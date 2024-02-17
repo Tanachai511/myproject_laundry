@@ -33,23 +33,6 @@ export class CartService {
         return cart
       }
 
-    // async create(cart : CreateCartDTO,user : Users) : Promise<Cart|null> {
-    
-    //     let cartEntity = new Cart()
-    //     cartEntity.cartPrice = cart.cartPrice
-    //     cartEntity.cartDeliveryDate = cart.cartDeliveryDate
-    //     cartEntity.paymentStatus = cart.paymentStatus
-
-    //     cartEntity.user = user;
-
-    //     Logger.log(JSON.stringify(cartEntity))
-    
-    //     let result = await cartEntity.save()
-    
-    //     return result
-        
-    // }
-
     async create(cartDTO : CreateCartDTO, user: User) : Promise<Cart|null> {
         
         let payment = new Payment()
@@ -91,21 +74,3 @@ export class CartService {
         await this.cartRepository.delete({cartID:id})
     }
 }
-
-
-
-
-
-        // let foods = cat.foods.map(f => {
-        //     let food = new CatFood()
-        //     food.name = f.name
-        //     food.type = f.type
-        //     food.cat = result
-        //     return result
-        // })
-        // Logger.log(JSON.stringify(CatFood))
-    
-        // await Promise.all(foods.map(async (food) => {
-        //     await food.save()
-        // }));
-        // foods.forEach(async f=> await f.save())

@@ -1,5 +1,5 @@
 import { Type } from "class-transformer";
-import { IsDate, IsNotEmpty, ValidateNested } from "class-validator";
+import { IsNotEmpty, ValidateNested } from "class-validator";
 import { CreatePaymentDTO } from "src/payment/payment.dto";
 import { CreateServiceDTO } from "src/service/service.dto";
 
@@ -19,9 +19,8 @@ export class CreateCartDTO {
     @IsNotEmpty()
     status : string
     
-    @Type(()=>Date)
-    @IsDate()
-    deliveryDate : Date;
+    @IsNotEmpty()
+    deliveryDate : string;
 
     @ValidateNested({ each: true})
     @Type(() => CreatePaymentDTO)

@@ -18,7 +18,7 @@ export class Cart extends BaseEntity {
     phone : number
 
     @Column()
-    deliveryDate : Date;
+    deliveryDate : string;
 
     @Column()
     cartPrice : number; 
