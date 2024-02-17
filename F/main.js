@@ -135,3 +135,15 @@ function toggleBackgroundColor(element) {
         }
     });
 }
+
+//คำนวนราคา
+const labels = document.querySelectorAll('.details label');
+
+labels.forEach(label => {
+    label.addEventListener('click', () => {
+        const quantity = parseInt(label.textContent);
+        const price = quantity * 12;
+        document.querySelector('.h4').textContent = `สำหรับ${quantity}ชิ้น`;
+        document.querySelector('.h1').textContent = `฿${price}`;
+    });
+});
