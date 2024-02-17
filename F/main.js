@@ -73,11 +73,6 @@ function getUserByEmail(email) {
     // ถ้าไม่พบผู้ใช้ในฐานข้อมูล
     return null;
 }
-//เพิ่มjsของเราตั้งแต่ตรงนี้นะ
-document.getElementById("confirmButton").addEventListener("click", function() {
-    alert("ทำการยืนยันแล้ว!");
-  });
-  
 // ฟังก์ชันเพื่อเปิดโมดัล
 function openModal(modalId) {
     var modal = document.getElementById(modalId);
@@ -98,18 +93,7 @@ document.querySelectorAll(".modal .close").forEach(function (closeBtn) {
     });
 });
 
-// เพิ่มเหตุการณ์ click ให้กับปุ่มยืนยันในโมดัล
-document.getElementById("confirmModalButton").addEventListener("click", function() {
-    // กระบวนการหลังจากคลิกที่ปุ่ม "ยืนยัน" ในโมดัล
-    alert("คุณได้ยืนยันแล้ว!"); // หรืออื่น ๆ ตามที่คุณต้องการทำ
-    closeModal('myModal'); // ปิดโมดัลหลังจากคลิกปุ่ม "ยืนยัน"
-});
 
-// เพิ่มเหตุการณ์ click ให้กับปุ่มปิดในโมดัล
-document.querySelector('.modal .close').addEventListener('click', function() {
-    closeModal('myModal');
-    modal.style.display = "none";
-});
 // Function to handle toggling background color
 function toggleBackgroundColor(element) {
     // Get all elements with the class "columnin"
@@ -130,16 +114,4 @@ function toggleBackgroundColor(element) {
             columnin.style.backgroundColor = '';
         }
     });
-
-
-
-
-}/*ชำระเงิน*/
-
-document.getElementById("confirmPayment").addEventListener("click", function() {
-    // ทำการ redirect หน้าไปยังหน้าตะกร้า
-    window.location.href = "cart.html"; // แก้ไขตามชื่อไฟล์ของหน้าตะกร้าที่คุณต้องการให้ไป
-});
-
-  
-  
+}
