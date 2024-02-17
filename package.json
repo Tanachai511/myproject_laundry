@@ -39,7 +39,8 @@
     "reflect-metadata": "^0.2.0",
     "rxjs": "^7.8.1",
     "sqlite3": "^5.1.7",
-    "typeorm": "^0.3.20"
+    "typeorm": "^0.3.20",
+    "vue": "^3.4.19"
   },
   "devDependencies": {
     "@nestjs/cli": "^10.0.0",

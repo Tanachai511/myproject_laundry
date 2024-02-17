@@ -130,4 +130,16 @@ function toggleBackgroundColor(element) {
             columnin.style.backgroundColor = '';
         }
     });
-}
+
+
+
+
+}/*ชำระเงิน*/
+
+document.getElementById("confirmPayment").addEventListener("click", function() {
+    // ทำการ redirect หน้าไปยังหน้าตะกร้า
+    window.location.href = "cart.html"; // แก้ไขตามชื่อไฟล์ของหน้าตะกร้าที่คุณต้องการให้ไป
+});
+
+  
+  
