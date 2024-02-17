@@ -21,7 +21,7 @@
   position: fixed;
   height: 100vh;
   width: 260px;
-  background: #460044;
+  background: #4f80c0;
   overflow: hidden;
   transition: 0.5s ease;
 }
@@ -37,7 +37,7 @@
 }
 
 .side-navbar ul li:hover {
-  background: #8b0084;
+  background: #Afd7f6;
 }
 
 .side-navbar ul li:first-child {
@@ -122,7 +122,7 @@
 }
 
 .header-icon .bx:hover {
-  background: #8a0083;
+  background: #4f80c0;
 }
 
 .btn {
@@ -135,14 +135,14 @@
 }
 
 .wash:hover, .baked:hover, .iron_clothes:hover {
-  background: #8a0083;
+  background: #Afd7f6;
 }
 
 .wash, .baked, .iron_clothes {
   display: flex; /* เปลี่ยนเป็น flexbox layout */
   justify-content: center; /* จัดให้ข้อความอยู่ตรงกลางตามแนวนอน */
   align-items: center; /* จัดให้ข้อความอยู่ตรงกลางตามแนวตั้ง */
-  background: #460044;
+  background: #4f80c0;
   border-radius: 0.5rem;
   color: #fff;
   font-size: 45px;

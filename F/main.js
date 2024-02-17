@@ -14,64 +14,84 @@ if (jwt != null) {
 }
 
 
-// Registration function
 function register() {
-    let username = document.getElementById('username').value;
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
+    // ดึงค่าที่ป้อนเข้ามาจากฟอร์ม
+    let username = document.getElementById('RegisterUsername').value;
+    let password = document.getElementById('Registerpassword').value;
 
-    if (username && email && password) {
-        alert("ลงทะเบียนสำเร็จ!");
-        // ส่วนที่ควรเพิ่ม: บันทึกข้อมูลลงในฐานข้อมูลหรือส่งข้อมูลไปยังเซิร์ฟเวอร์
+    // ตรวจสอบว่ามีข้อมูลที่ป้อนมาหรือไม่
+    if (username && password) {
+        // ส่งข้อมูลไปยังเซิร์ฟเวอร์หรือฐานข้อมูล เพื่อทำการลงทะเบียน
+        // ในที่นี้คุณสามารถใช้ fetch API หรือ axios เพื่อส่งคำขอ HTTP ไปยังเซิร์ฟเวอร์
+        // ตัวอย่าง fetch API:
+        fetch('http://127.0.0.1:9000/user/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                password: password,
+                username: username
+            })
+        })
+        .then(response => {
+            // ตรวจสอบสถานะของคำขอ
+            if (!response.ok) {
+                throw new Error('ไม่สามารถลงทะเบียนได้');
+            }
+            return response.json(); // ส่งค่า json ที่รับกลับไป
+        })
+        .then(data => {
+            // สามารถทำอย่างไรก็ได้หลังจากลงทะเบียนสำเร็จ
+            alert('ลงทะเบียนสำเร็จ');
+            console.log(data); // สามารถลองดูข้อมูลที่ได้รับได้ที่คอนโซล
+            window.location.href = './login.html'
+        })
+        .catch(error => {
+            // แสดงข้อความข้อผิดพลาดถ้ามี
+            console.error('เกิดข้อผิดพลาด:', error);
+            alert('เกิดข้อผิดพลาดในการลงทะเบียน');
+        });
     } else {
-        alert("กรุณากรอกข้อมูลให้ครบทุกช่อง!");
+        // แสดงข้อความแจ้งเตือนถ้าข้อมูลไม่ครบ
+        alert('กรุณากรอกข้อมูลให้ครบทุกช่อง');
     }
 }
 
 // Login function
 function login() {
-    let email = document.getElementById('loginEmail').value;
-    let password = document.getElementById('loginPassword').value;
+    // ดึงค่าจาก input ของชื่อผู้ใช้และรหัสผ่าน
+    let username = document.getElementById('Username').value;
+    let password = document.getElementById('password').value;
 
-    // เช็คว่าอีเมลที่ป้อนมาได้ทำการลงทะเบียนหรือยัง
-    if (!isEmailRegistered(email)) {
-        alert("กรุณาลงทะเบียนก่อนทำการล็อกอิน!");
-        return;
-    }
-
-    // เช็คว่ารหัสผ่านที่ป้อนตรงกับที่ลงทะเบียนไว้หรือไม่
-    let registeredUser = getUserByEmail(email);
-    if (password === registeredUser.password) {
-        alert("เข้าสู่ระบบสำเร็จ!");
-        window.location.href = "index.html"; // เด้งกลับไปที่หน้า index.html    } else {
-        alert("รหัสผ่านไม่ถูกต้อง!");
-    }
-}
-
-// Check if email is registered
-function isEmailRegistered(email) {
-    let registeredEmails = ["registered@email.com", "anotherregistered@email.com"]; // อีเมลที่ลงทะเบียนแล้ว
-    return registeredEmails.includes(email);
-}
-
-// Get user by email
-function getUserByEmail(email) {
-    // ส่วนที่ควรเพิ่ม: เข้าถึงข้อมูลผู้ใช้จากฐานข้อมูลหรือจากข้อมูลที่เก็บไว้
-    // ในกรณีนี้จะใช้ข้อมูลสมมติเพื่อการแสดงตัวอย่างเท่านั้น
-    let registeredUsers = [
-        { email: "registered@email.com", password: "password1", username: "User1" },
-        { email: "anotherregistered@email.com", password: "password2", username: "User2" }
-    ];
-
-    // ค้นหาข้อมูลผู้ใช้ที่ตรงกับอีเมลที่ระบุ
-    for (let i = 0; i < registeredUsers.length; i++) {
-        if (registeredUsers[i].email === email) {
-            return registeredUsers[i];
+    // ส่งข้อมูลไปยังเซิร์ฟเวอร์เพื่อตรวจสอบการล็อกอิน
+    fetch('http://127.0.0.1:9000/auth/signin', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            password: password,
+            username: username
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        // ตรวจสอบว่ามี accessToken หรือไม่
+        if (data.accessToken) {
+            // หากมี accessToken แสดงว่าล็อกอินสำเร็จ
+            alert('เข้าสู่ระบบสำเร็จ!');
+            window.location.href = './index.html'
+            // สามารถทำอะไรต่อได้ตามที่ต้องการ เช่น เปลี่ยนหน้าไปยังหน้าหลัก
+        } else {
+            // หากไม่มี accessToken แสดงว่าล็อกอินไม่สำเร็จ
+            alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!');
         }
-    }
-
-    // ถ้าไม่พบผู้ใช้ในฐานข้อมูล
-    return null;
+    })
+    .catch(error => {
+        console.error('เกิดข้อผิดพลาดในการล็อกอิน:', error);
+        alert('เกิดข้อผิดพลาดในการล็อกอิน!');
+    });
 }
 // ฟังก์ชันเพื่อเปิดโมดัล
 function openModal(modalId) {

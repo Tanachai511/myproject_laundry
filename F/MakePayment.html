@@ -35,8 +35,13 @@
         <div class="content">
             <div class="top-navbar">
                 <div class="bx bx-menu" id="menu-icon"></div>
-                <i class="bx bxs-cart-alt"><span>0</span></i>
+                <a href="cart.html">
+                    <i class="bx bxs-cart-alt"><span></span></i>
+                </a>
             </div>
+            <a href="#" onclick="history.back()">
+                <span class="icon"><i class='bx bx-chevron-left bx-lg'></i></span>
+            </a>  
             <h1>ชำระเงิน</h1>
             <form id="paymentForm">
                 <div class="radio-container">
@@ -53,8 +58,9 @@
                 <p>เลขที่บัญชี: 123-456-789</p>
                 <p>ชื่อบัญชี: ชื่อผู้รับ</p>
               </div>
-          
+            <a href="cart.html">
               <button type="button" id="confirmPayment">ยืนยันการชำระเงิน</button>
+            </a>
             </form>
         </div>
     </div>
