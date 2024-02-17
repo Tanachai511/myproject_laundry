@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Sidebar Menu</title>
+    <link rel="stylesheet" href="deli.css">
+    <!-- Box Icons -->
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
+<body>
+    
+    <div class="main">
+        <div class="side-navbar">
+            <ul>
+                <li><a href="#">
+                    <span class="icon"><i class='bx bxs-dashboard'></i></span>
+                    <span class="text"><h2>team F</h2></span>
+                </a></li>
+                <li>
+                    <a href="Login.html" class="text login">
+                        <span class="icon"><i class='bx bxs-user' ></i></span>
+                        <span class="text">login</span>
+                    </a>
+                </li>
+                              
+                <li><a href="#">
+                    <span class="icon"><i class='bx bxs-log-out' ></i></span>
+                    <span class="text">Log-Out</span>
+                </a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="top-navbar">
+                <div class="bx bx-menu" id="menu-icon"></div>
+                <i class="bx bxs-cart-alt"><span>0</span></i>
+            </div>
+       
+        </div>
+    </div>
+    <h1>เลือกเวลาสำหรับรับ-ส่ง</h1>
+   
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('myModal')">&times;</span>
+        <div>
+            <h2>ช่วงเช้า</h2>
+            <div class="column1">
+                <div class="columnin" onclick="toggleBackgroundColor(this)">9:00-12:00</div>
+            </div>
+        </div>
+        <!-- รายละเอียดที่สอง -->
+<div>
+    <h2>ช่วงบ่าย</h2>
+    <div class="column3">
+        <!-- แก้ไข HTML เพิ่ม onclick ให้กับแต่ละ columnin -->
+        <div class="columnin" onclick="toggleBackgroundColor(this)">12:00-13:00</div>
+        <div class="columnin" onclick="toggleBackgroundColor(this)">14:00-15:00</div>
+        <div class="columnin" onclick="toggleBackgroundColor(this)">16:00-17:00</div>
+    </div>
+</div>
+
+        <div>
+            <h2>ช่วงเย็น</h2>
+            <div class="column1">
+                <div class="columnin" onclick="toggleBackgroundColor(this)">18:00-20:00</div>   
+            </div>
+        </div>
+        
+        <button id="confirmModalButton">ยืนยัน</button>
+      </div>
+    </div>
+
+     
+     <!-- เพิ่มปุ่มหรือลิงก์สำหรับเปิดโมดัลในคลาส lub -->
+     <a href="#" class="lub" onclick="openModal('myModal')">เวลารับ</a>
+     
+     <!-- เพิ่มปุ่มหรือลิงก์สำหรับเปิดโมดัลในคลาส song -->
+     <a href="#" class="song" onclick="openModal('myModal')">เวลาจัดส่ง</a>
+     <div class="container">
+        <div class="column5">
+            <h3>รายละเอียด</h3>
+            <!-- สร้าง Radio buttons สำหรับ Column 1 -->
+            <div class="checkbox-group">
+                <label><input type="radio" name="location">พนักงานมารับห้องหรือหน้าบ้าน</label>
+                <label><input type="radio" name="location"> ฝากไว้กับรปภ.</label>
+                <label><input type="radio" name="location"> ส่งร้านเอง</label>
+            </div>
+        </div>
+        <div class="column5">
+            <h3>รายละเอียด</h3>
+            <!-- สร้าง Radio buttons สำหรับ Column 2 -->
+            <div class="checkbox-group">
+                <label><input type="radio" name="pickup">ไว้หน้าห้องหรือหน้าบ้าน</label>
+                <label><input type="radio" name="pickup"> ฝากไว้กับรปภ.</label>
+                <label><input type="radio" name="pickup"> มารับที่ร้านเอง</label>
+            </div>
+        </div>
+    </div>
+        
+    </div>
+    <button id="confirmButton">ยืนยัน</button>
+    <script src="main.js"></script>
+ 
+</body>
+</html>
