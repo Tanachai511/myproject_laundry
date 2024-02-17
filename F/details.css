@@ -1,0 +1,103 @@
+/*cssของdetails*/
+.h1{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.h4{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  padding: 4.5px;
+}
+.details{
+  display: grid;
+  text-align: center;
+  grid-template-columns:1fr 1fr 1fr 1fr 1fr;
+  column-gap: 10px;
+  border-radius: 2rem;
+  padding: 2px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(2, 2, 2);
+}
+
+.details-10{
+  padding: 10px 10px;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  color: #d2d2d2;
+}
+.details-10:hover{
+  background: #8a0083;
+}
+.details-20{
+  padding: 10px 10px;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  color: #d2d2d2;
+}
+.details-20:hover{
+  background: #8a0083;
+}
+  
+.details-30{
+  padding: 10px 10px;
+  background-color: #ffffff;
+  border-radius: 2rem;  
+  color: #d2d2d2;
+}
+.details-30:hover{
+  background: #8a0083;
+}
+  
+.details-40{
+  padding: 10px 10px;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  color: #d2d2d2;
+}
+.details-40:hover{
+  background: #8a0083;
+}
+  
+.details-50{
+  padding: 10px 10px;
+  background-color: #ffffff;
+  border-radius: 2rem;
+  color: #d2d2d2;
+}
+.details-50:hover{
+  background-color: #8a0083;
+}
+.more{
+  display: grid;
+  grid-template-columns: auto auto; /* 2 columns */
+  grid-template-rows: auto; /* 1 row */
+  column-gap: 10px;
+  padding: 2px;
+}
+.more-1{
+  text-align: center;
+  column-gap: 10px;
+  border-radius: 2rem;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border: 1px solid rgb(2, 2, 2);
+  margin-bottom: 0.5rem;
+}
+.more-1:hover{
+  background-color: #f4c8f2;
+}
+.basket{
+  display: grid; 
+  background-color: #8526f3;
+  color:#ffffff;
+  border-radius: 0.5rem;
+  column-gap: 10px;
+  padding: 2px;
+  text-align: center;
+  column-gap: 10px;
+  border-radius: 2rem;
+  padding: 1.25rem;
+  margin-bottom: 0.5rem;
+}
