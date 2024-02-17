@@ -12,7 +12,7 @@ POST {{baseUrl}}/user/signup
 Content-Type: application/json
 
 {
-    "username" : "Admin",
+    "username" : "Ganui",
     "password" : "password123"
 }
 
@@ -20,12 +20,19 @@ Content-Type: application/json
 POST {{baseUrl}}/auth/signin
 Content-Type: application/x-www-form-urlencoded
 
-username=Admin&password=password123
+username=Ganui&password=password123
+
+###
+POST {{baseUrl}}/auth/profile
+Content-Type: application/x-www-form-urlencoded
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdhbnVpIiwic3ViIjo1LCJpYXQiOjE3MDgxNzM0MDUsImV4cCI6MTcwODE3NzAwNX0.h65Rih-XhOQdRf_30muERdhy1nOj0-bowfEp6_anygE
+
+username=Ganui&password=password123
 
 ###
 POST {{baseUrl}}/cart
 Content-Type: application/json
-Authorization: Bearer <"d983ee498ffb43fef7449d2f9d05a7e3fc0a8a8c847a33e2ff4659db0eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoyLCJpYXQiOjE3MDgxNTk5NzgsImV4cCI6MTcwODMzMjc3OH0.tQj2p57rJ3pIiMWK47LIt9bhCar8tSj5SLEBYX1UTK4">
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdhbnVpIiwic3ViIjo1LCJpYXQiOjE3MDgxNzM0MDUsImV4cCI6MTcwODE3NzAwNX0.h65Rih-XhOQdRf_30muERdhy1nOj0-bowfEp6_anygE
 
 {   
     "FandLname" : "John Doe",

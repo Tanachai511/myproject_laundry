@@ -1,4 +1,5 @@
-import { IsNotEmpty, Matches } from "class-validator";
+import { IsIn, IsNotEmpty, Matches } from "class-validator";
+import { Role } from "src/auth/role.enum";
 
 export class SignUpDto {
     @IsNotEmpty()
@@ -9,4 +10,8 @@ export class SignUpDto {
         message: 'Password must be minimum eight characters, at least one letter and one number.'
     })
     password: string
+
+    @IsNotEmpty()
+    @IsIn([Role.User, Role.Admin]) 
+    role: Role = Role.User;
 }

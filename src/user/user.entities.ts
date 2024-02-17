@@ -1,3 +1,4 @@
+import { Role } from "src/auth/role.enum";
 import { Cart } from "src/cart/cart.entities";
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, CreateDateColumn, OneToMany } from "typeorm";
 
@@ -11,6 +12,9 @@ export class User extends BaseEntity {
 
     @Column()
     password : string
+
+    @Column({ default: Role.User }) 
+    role: Role;
 
     @CreateDateColumn()
     createdate : Date

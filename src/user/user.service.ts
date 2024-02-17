@@ -1,9 +1,9 @@
-import { ConflictException, Injectable, Logger } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { SignUpDto } from './signup.dto';
 import * as bcrypt from 'bcrypt'
 import { User } from './user.entities';
-import { Entity, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
@@ -11,11 +11,12 @@ export class UserService {
         @InjectRepository(User)
         private userRepository : Repository<User>
     ) {}
-
+        
     async signUp(signupUpDto: SignUpDto): Promise<User> {
             const {
                 username,
                 password,
+                role
             } = signupUpDto
     
             const hashedPassword = await bcrypt.hashSync(password, 10)
@@ -23,6 +24,7 @@ export class UserService {
             const user = this.userRepository.create({
                 username,
                 password: hashedPassword,
+                role
             })
 
             Logger.log(JSON.stringify(user))  
