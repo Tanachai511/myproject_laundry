@@ -133,6 +133,7 @@
     margin: auto;
     padding:46px 1px 1px 1px ;
     height: 990px;
+
 }
 .pfb{
     display: flex;
@@ -165,40 +166,28 @@ input::placeholder{
     font-style: initial;
     font-weight: 600;
     color: #2c2c2c;
+    
 }
 .number{
     margin: 10px 0;
 }
-.contactx{
-   padding: 0px 610px 250px 610px;
-   display: flex;
-   text-align: center;
-   justify-content: center;
-   flex-direction: column-reverse;
-   width: 109%;
+input[type="text"] {
+  width: 600px; /* เปลี่ยนความยาวตามที่ต้องการ */
+}
+#confirmButton {
+  background-color: #d232ac;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px; 
+  z-index: 999; 
+}
 
-}
-@media screen and (max-width: 768px) {
-}
-textarea {
-    width: 100%; /* กำหนดให้กล่องข้อความเต็มความกว้างของพื้นที่ที่กำหนดให้ใน container */
-    width: 50%; /* กำหนดความยาวของกล่องข้อความเป็น 50% ของความกว้างของ container */
-    border: none;
-    background-color: #f8f8f8;
-    border-radius: 7px;
-    padding: 40px;
-    outline: none;
-    position: relative;
-    font-weight: 500;
-    font-size: x-large;
-}
-@media screen and (min-width: 768px) {
-    textarea {
-        width: 80%; /* เมื่อหน้าจอมีความกว้างมากกว่าหรือเท่ากับ 768px กำหนดความยาวของกล่องข้อความให้เป็น 80% */
-    }
-}
-textarea::placeholder{
-    font-style: initial;
-    font-weight: 600;
-    color: #2c2c2c;
+#confirmButton:hover {
+  background-color: #bc61d1;
 }
