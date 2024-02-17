@@ -112,8 +112,6 @@ document.querySelectorAll(".modal .close").forEach(function (closeBtn) {
         closeModal(modal.id);
     });
 });
-
-
 // Function to handle toggling background color
 function toggleBackgroundColor(element) {
     // Get all elements with the class "columnin"

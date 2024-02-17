@@ -3,9 +3,7 @@
   width: 100%;
   height: 100%;
 }
-
-.h1,
-.h4 {
+.h,.h1,.h4{
   display: flex;
   justify-content: center;
   margin: auto;
