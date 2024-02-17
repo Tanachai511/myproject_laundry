@@ -1,0 +1,78 @@
+@hostname = 127.0.0.1
+@port = 9000
+@serverUrl = http://{{hostname}}:{{port}}
+@baseUrl = http://{{hostname}}:{{port}}
+
+
+###
+GET {{baseUrl}}/cart
+
+###
+POST {{baseUrl}}/user/signup
+Content-Type: application/json
+
+{
+    "username" : "Admin",
+    "password" : "password123"
+}
+
+###
+POST {{baseUrl}}/auth/signin
+Content-Type: application/x-www-form-urlencoded
+
+username=Admin&password=password123
+
+###
+POST {{baseUrl}}/cart
+Content-Type: application/json
+Authorization: Bearer <"d983ee498ffb43fef7449d2f9d05a7e3fc0a8a8c847a33e2ff4659db0eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkbWluIiwic3ViIjoyLCJpYXQiOjE3MDgxNTk5NzgsImV4cCI6MTcwODMzMjc3OH0.tQj2p57rJ3pIiMWK47LIt9bhCar8tSj5SLEBYX1UTK4">
+
+{   
+    "FandLname" : "John Doe",
+    "addr" : "moon",
+    "phone" : "0979858786",
+    "deliveryDate" : "July 20, 69 00:20:18",
+    "status" : "unpaid",
+    "cartPrice" : "550",
+    "payment": {
+        "paymentType" : "Transfer"
+    },
+    "service": {
+        "serviceName" : "Wash",
+        "servicePrice" : "450"
+    }
+}
+
+###
+POST {{baseUrl}}/payment
+Content-Type: application/json
+
+{
+    "paymentType" : "Cash"
+}
+
+###
+PUT {{baseUrl}}/payment/2
+Content-Type: application/json
+
+{   "paymentID" : 2,
+    "paymentType" : "Transfer"
+}
+
+###
+POST {{baseUrl}}/service
+Content-Type: application/json
+
+{
+    "serviceName" : "Wash",
+    "servicePrice" : "450"
+}
+
+###
+DELETE {{baseUrl}}/cart/2
+
+###
+DELETE {{baseUrl}}/payment/1
+
+###
+DELETE {{baseUrl}}/service/1
