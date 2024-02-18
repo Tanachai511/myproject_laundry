@@ -36,7 +36,7 @@
             <div class="top-navbar">
                 <div class="bx bx-menu" id="menu-icon"></div>
                 <a href="cart.html">
-                    <i class="bx bxs-cart-alt" onclick="populateTable();"><span></span></i>
+                    <i class="bx bxs-cart-alt"><span></span></i>
                 </a>
             </div>
             <a href="#" onclick="history.back()">
@@ -45,21 +45,22 @@
             <h1>ชำระเงิน</h1>
             <form id="paymentForm">
                 <div class="radio-container">
-              <input type="radio" id="cashPayment" name="paymentMethod" value="cash">
-              <label for="cashPayment">ชำระด้วยเงินสด:</label>
+                    <button type="button" id="cashPayment" name="paymentMethod" >ชำระด้วยเงินสด:</button>
                 </div>
-              <div class="radio-container">
-                <input type="radio" id="bankTransferPayment" name="paymentMethod" value="bankTransfer">
-                <label for="bankTransferPayment">ชำระผ่านธนาคาร</label>
-              </div>
-              <div id="bankTransferDetails" class="payment-details">
-                <p>โปรดโอนเงินไปยังบัญชีด้านล่าง:</p>
-                <p>ธนาคาร: ชื่อธนาคาร</p>
-                <p>เลขที่บัญชี: 123-456-789</p>
-                <p>ชื่อบัญชี: ชื่อผู้รับ</p>
-              </div>
-              <button type="button" id="confirmPayment" onclick="sendData()" >ยืนยันการชำระเงิน</button>
+                <div class="radio-container">
+                    <button class="button-1" type="button" id="bankTransferPayment" name="paymentMethod" >ชำระผ่านธนาคาร</button>
+                </div>
+                <div id="bankTransferDetails" class="payment-details">
+                    <p>โปรดโอนเงินไปยังบัญชีด้านล่าง:</p>
+                    <p>ธนาคาร: ชื่อธนาคาร</p>
+                    <p>เลขที่บัญชี: 123-456-789</p>
+                    <p>ชื่อบัญชี: ชื่อผู้รับ</p>
+                </div>
+                <a href="cart.html">
+                    <button class="button-1" type="button" id="confirmPayment">ยืนยันการชำระเงิน</button>
+                </a>
             </form>
+            
         </div>
     </div>
 
