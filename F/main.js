@@ -2,8 +2,9 @@
 let menu = document.querySelector('#menu-icon');
 let sidenavbar = document.querySelector('.side-navbar');
 let content = document.querySelector('.content');
+const accessToken = localStorage.getItem('accessToken');
 
-menu.onclick = () => {
+menu.onclickcontent = () => {
     sidenavbar.classList.toggle('active');
     content.classList.toggle('active');
 }
@@ -17,14 +18,14 @@ if (jwt != null) {
 function register() {
     // ดึงค่าที่ป้อนเข้ามาจากฟอร์ม
     let username = document.getElementById('RegisterUsername').value;
-    let password = document.getElementById('Registerpassword').value;
+    let password = document.getElementById('RegisterPassword').value;
 
     // ตรวจสอบว่ามีข้อมูลที่ป้อนมาหรือไม่
     if (username && password) {
         // ส่งข้อมูลไปยังเซิร์ฟเวอร์หรือฐานข้อมูล เพื่อทำการลงทะเบียน
         // ในที่นี้คุณสามารถใช้ fetch API หรือ axios เพื่อส่งคำขอ HTTP ไปยังเซิร์ฟเวอร์
         // ตัวอย่าง fetch API:
-        fetch('http://127.0.0.1:9000/user/signup', {
+        fetch('http://127.0.0.1:2000/user/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,12 +61,10 @@ function register() {
 
 // Login function
 function login() {
-    // ดึงค่าจาก input ของชื่อผู้ใช้และรหัสผ่าน
     let username = document.getElementById('Username').value;
     let password = document.getElementById('password').value;
 
-    // ส่งข้อมูลไปยังเซิร์ฟเวอร์เพื่อตรวจสอบการล็อกอิน
-    fetch('http://127.0.0.1:9000/auth/signin', {
+    fetch('http://127.0.0.1:2000/auth/signin', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -77,22 +76,17 @@ function login() {
     })
     .then(response => response.json())
     .then(data => {
-        // ตรวจสอบว่ามี accessToken หรือไม่
         if (data.accessToken) {
-            // หากมี accessToken แสดงว่าล็อกอินสำเร็จ
             alert('เข้าสู่ระบบสำเร็จ!');
-            window.location.href = './index.html'
-            // สามารถทำอะไรต่อได้ตามที่ต้องการ เช่น เปลี่ยนหน้าไปยังหน้าหลัก
+            window.location.href = './index.html';
+            console.log(accessToken)
+            sendData(data.accessToken)
         } else {
-            // หากไม่มี accessToken แสดงว่าล็อกอินไม่สำเร็จ
             alert('ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง!');
         }
     })
-    .catch(error => {
-        console.error('เกิดข้อผิดพลาดในการล็อกอิน:', error);
-        alert('เกิดข้อผิดพลาดในการล็อกอิน!');
-    });
 }
+
 // ฟังก์ชันเพื่อเปิดโมดัล
 function openModal(modalId) {
     var modal = document.getElementById(modalId);
@@ -112,6 +106,7 @@ document.querySelectorAll(".modal .close").forEach(function (closeBtn) {
         closeModal(modal.id);
     });
 });
+
 // Function to handle toggling background color
 function toggleBackgroundColor(element) {
     // Get all elements with the class "columnin"
@@ -145,3 +140,80 @@ labels.forEach(label => {
         document.querySelector('.h1').textContent = `฿${price}`;
     });
 });
+
+//บันทึกcart
+function sendData() {
+    const accessToken = localStorage.getItem('accessToken'); // ดึง accessToken จาก localStorage
+
+    // เรียกใช้ฟังก์ชัน login เพื่อเข้าสู่ระบบและรับ accessToken
+    login(accessToken);
+
+    const paymentMethodInput = document.querySelector('input[name="paymentMethod"]:checked');
+    if (paymentMethodInput) {
+        const paymentMethod = paymentMethodInput.value;
+        const h1Element = document.querySelector('.h'); // เลือก element ที่มีคลาส 'h'
+        const textContent = h1Element ? h1Element.textContent.trim() : ''; // ดึงข้อความภายใน element <h1> และลบช่องว่างที่อยู่รอบข้อความ
+
+        const servicePriceElement = document.querySelector('#result h1');
+        const servicePrice = servicePriceElement ? servicePriceElement.innerHTML : '';    
+
+        const FandLname = document.getElementById('FandLname').value;
+        const phone = document.getElementById('phone').value;
+        const addr = document.getElementById('addr').value;
+        const deliveryDate = document.querySelector('.selected').textContent;
+        const cartPrice = document.getElementById('cartprice').textContent;
+        const status = "unpaid";
+
+        const data = {
+            FandLname: FandLname,
+            addr: addr,
+            phone: phone,
+            deliveryDate: deliveryDate,
+            status: status,
+            cartPrice: cartPrice,
+            payment: {
+                paymentType: paymentMethod
+            },
+            service: {
+                serviceName: textContent,
+                servicePrice: servicePrice
+            }
+        };
+
+    // ทำการส่งข้อมูลที่เตรียมไว้ไปยัง API โดยใช้ fetch หรือ axios
+    fetch('http://127.0.0.1:2000/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}` // ใส่ accessToken ใน header Authorization
+        },
+        body: JSON.stringify(data) // แปลงข้อมูลเป็น JSON และส่งไปยัง API
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // ดำเนินการเพิ่มเติมหลังจากที่ส่งข้อมูลสำเร็จ เช่น แสดงข้อความ รีเฟรชหน้า เปลี่ยนหน้า ฯลฯ
+
+        // เพิ่มข้อมูลลงในตาราง tbody
+        const tbody = document.querySelector('tbody');
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${FandLname}</td>
+            <td>${addr}</td>
+            <td>${phone}</td>
+            <td>${deliveryDate}</td>
+            <td>${cartPrice}</td>
+        `;
+        tbody.appendChild(tr);
+        
+        console.log('Cart POST success:', data);
+    })
+    .catch(error => {
+        console.error('There was an error sending the data:', error);
+    });
+}
+}

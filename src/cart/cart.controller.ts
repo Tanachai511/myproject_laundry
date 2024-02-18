@@ -13,6 +13,7 @@ export class CartController {
     }
 
     @UseGuards(JwtAuthGuard)
+    @UseInterceptors(CartInterceptor)
     @Get()
     getIndex(@Req() request: Request,@Request() {user}: any): Promise<Cart[]> {
         return this.cartService.findAll(user);

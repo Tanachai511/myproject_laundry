@@ -36,7 +36,7 @@
             <div class="top-navbar">
                 <div class="bx bx-menu" id="menu-icon"></div>
                 <a href="cart.html">
-                    <i class="bx bxs-cart-alt"><span></span></i>
+                    <i class="bx bxs-cart-alt" onclick="populateTable();"><span></span></i>
                 </a>
             </div>
             <a href="#" onclick="history.back()">
@@ -58,9 +58,7 @@
                 <p>เลขที่บัญชี: 123-456-789</p>
                 <p>ชื่อบัญชี: ชื่อผู้รับ</p>
               </div>
-            <a href="cart.html">
-              <button type="button" id="confirmPayment">ยืนยันการชำระเงิน</button>
-            </a>
+              <button type="button" id="confirmPayment" onclick="sendData()" >ยืนยันการชำระเงิน</button>
             </form>
         </div>
     </div>

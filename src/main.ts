@@ -9,6 +9,6 @@ async function bootstrap() {
   app.use(cors({
     origin: 'http://127.0.0.1:5500' // ระบุโดเมนหรือ URL ของเว็บไซต์ของคุณที่อนุญาตเข้าถึงข้อมูล
   }));
-  await app.listen(9000);
+  await app.listen(2000);
 }
 bootstrap();

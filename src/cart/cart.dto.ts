@@ -36,5 +36,5 @@ export class UpdateCartDTO {
     cartID : number;
 
     @IsNotEmpty()
-    paymentStatus : string;
+    status : string;
 }

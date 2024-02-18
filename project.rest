@@ -23,6 +23,12 @@ Content-Type: application/x-www-form-urlencoded
 username=Ganui&password=password123
 
 ###
+POST {{baseUrl}}/auth/acesstoken
+Content-Type: application/x-www-form-urlencoded
+
+username=Bard&password=password123
+
+###
 POST {{baseUrl}}/auth/profile
 Content-Type: application/x-www-form-urlencoded
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkdhbnVpIiwic3ViIjo1LCJpYXQiOjE3MDgxNzM0MDUsImV4cCI6MTcwODE3NzAwNX0.h65Rih-XhOQdRf_30muERdhy1nOj0-bowfEp6_anygE
