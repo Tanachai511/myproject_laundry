@@ -21,7 +21,7 @@
   position: fixed;
   height: 100vh;
   width: 260px;
-  background: #460044;
+  background: #4f80c0;
   overflow: hidden;
   transition: 0.5s ease;
 }
@@ -37,7 +37,7 @@
 }
 
 .side-navbar ul li:hover {
-  background: #8b0084;
+  background: #4f80c0;
 }
 
 .side-navbar ul li:first-child {
@@ -124,7 +124,7 @@
 }
 
 .header-icon .bx:hover {
-  background: #bd46b7;
+  background: #Afd7f6;
   border-radius: 25%;
 }
 
@@ -140,7 +140,7 @@
     flex-direction: column;
     height: 943px;
     justify-content: center;
-    background-color: #f7b6f0;   
+    background-color: #Afd7f6;   
     
 }
 
@@ -175,7 +175,7 @@ input[type="text"] {
   width: 600px; /* เปลี่ยนความยาวตามที่ต้องการ */
 }
 #confirmButton {
-  background-color: #d232ac;
+  background-color: #4f80c0;
   color: white;
   padding: 10px 20px;
   border: none;
@@ -189,5 +189,5 @@ input[type="text"] {
 }
 
 #confirmButton:hover {
-  background-color: #bc61d1;
+  background-color: #4f80c0;
 }
